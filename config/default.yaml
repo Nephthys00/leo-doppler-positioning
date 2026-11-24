@@ -1,0 +1,20 @@
+# Default project settings. Do NOT put real personal coordinates here.
+# Override any value in config/local.yaml (gitignored).
+
+random_seed: 42
+
+# Example observer: a generic public location (Istanbul city centre).
+observer:
+  name: example
+  lat_deg: 41.01
+  lon_deg: 28.98
+  alt_m: 40.0
+
+# Satellite used in Phase 0 (ISS, NORAD catalog number 25544).
+satellite:
+  name: ISS (ZARYA)
+  norad_id: 25544
+
+tle:
+  cache_dir: data/tle
+  max_age_days: 1.0

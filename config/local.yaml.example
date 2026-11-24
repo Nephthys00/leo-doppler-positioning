@@ -1,0 +1,8 @@
+# Copy this file to config/local.yaml and edit it.
+# config/local.yaml is gitignored: your real coordinates never enter the repo.
+
+observer:
+  name: home
+  lat_deg: 0.0    # your latitude in degrees (north positive)
+  lon_deg: 0.0    # your longitude in degrees (east positive)
+  alt_m: 0.0      # height above the WGS84 ellipsoid in metres
