@@ -3,6 +3,9 @@ from pathlib import Path
 
 from skyfield.api import EarthSatellite, load
 
+from skyfield.timelib import Time
+from skyfield.toposlib import GeographicPosition
+
 CELESTRAK_URL = "https://celestrak.org/NORAD/elements/gp.php"
 SPEED_OF_LIGHT_M_S = 299_792_458.0
 
@@ -22,8 +25,7 @@ def fetch_tle(norad_id: int, path: str, max_age_days:float=1.0) -> EarthSatellit
 
 
 
-from skyfield.timelib import Time
-from skyfield.toposlib import GeographicPosition
+
 
 def observer_geometry(satellite: EarthSatellite, observer: GeographicPosition, times: Time) -> tuple:
     """Return elevation (deg), range (m) and range rate (m/s) of a satellite seen from an observer."""
@@ -34,6 +36,5 @@ def observer_geometry(satellite: EarthSatellite, observer: GeographicPosition, t
 
 
 def doppler_shift(frequency_hz: float, range_rate_m_s: float) -> float:
-    """Returns the doppler shift (Hz) for a given frequency (Hz) and range rate (m/s)."""
     shift=-(frequency_hz *range_rate_m_s / SPEED_OF_LIGHT_M_S)     # Minus sign: approaching (negative range rate) gives a positive shift
     return shift
