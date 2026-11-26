@@ -4,6 +4,8 @@ from pathlib import Path
 from skyfield.api import EarthSatellite, load
 
 CELESTRAK_URL = "https://celestrak.org/NORAD/elements/gp.php"
+SPEED_OF_LIGHT_M_S = 299_792_458.0
+
 
 def fetch_tle(norad_id: int, path: str, max_age_days:float=1.0) -> EarthSatellite: 
     """Load a satellite from a local TLE file, download it if it is not present or too old."""
@@ -30,3 +32,8 @@ def observer_geometry(satellite: EarthSatellite, observer: GeographicPosition, t
     #Returns (elevation, azimuth, distance, elevation rate, azimuth rate, range rate); we keep 3
     return elevation.degrees, distance.m, range_rate.m_per_s
 
+
+def doppler_shift(frequency_hz: float, range_rate_m_s: float) -> float:
+    """Returns the doppler shift (Hz) for a given frequency (Hz) and range rate (m/s)."""
+    shift=-(frequency_hz *range_rate_m_s / SPEED_OF_LIGHT_M_S)     # Minus sign: approaching (negative range rate) gives a positive shift
+    return shift

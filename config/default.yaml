@@ -14,6 +14,7 @@ observer:
 satellite:
   name: ISS (ZARYA)
   norad_id: 25544
+  downlink_freq_hz: 145800000 # FM voice downlink (SatNOGS DB, checked 2026-11-26)
 
 tle:
   cache_dir: data/tle
